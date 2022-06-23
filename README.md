@@ -5,5 +5,5 @@
 ## Description
 
 - Save the constant value as a json file and load it as a json-object.
-- Get the values you want using fromJSON.
+- Get the values you want using [fromJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson).
 
