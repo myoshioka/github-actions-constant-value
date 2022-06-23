@@ -1,0 +1,41 @@
+name: main
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        type: choice
+        description: choice
+        options:
+        - development
+        - staging
+        - production
+        default: 'development'
+    branches: [ master ]
+
+jobs:
+  main:
+    name: main
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set constant value
+      id: constant-value
+      uses: ./.github/actions/set_value
+      with:
+        target: ${{ github.event.inputs.stage }}
+
+    - name: cehck value
+      run: |
+        echo "name =  ${{ fromJSON(steps.constant-value.outputs.json-obj).name }}"
+        echo "id =  ${{ fromJSON(steps.constant-value.outputs.json-obj).id }}"
+
+    - name: set env
+      run: |
+        echo ${NAME}
+        echo ${ID}
+      env:
+        NAME: ${{ fromJSON(steps.constant-value.outputs.json-obj).name }}
+        ID : ${{ fromJSON(steps.constant-value.outputs.json-obj).id }}
+

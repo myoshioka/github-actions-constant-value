@@ -1,0 +1,20 @@
+name: "Set value"
+description: "Set value"
+
+inputs:
+  target:
+    required: true
+outputs:
+  json-obj:
+    value: ${{ steps.set.outputs.val }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set 
+      id: set
+      run: |
+        echo ::set-output name=val::\
+        $(cat ./.github/workflows/val.json | \
+        jq -r '."${{ inputs.target }}"')
+      shell: bash

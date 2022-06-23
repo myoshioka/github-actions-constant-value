@@ -1,0 +1,14 @@
+{
+    "development": {
+        "name": "aaaaaaa",
+        "id": "id-aaaaaaa"
+    },
+    "staging": {
+        "name": "bbbbbbbb",
+        "id": "id-bbbbbbbb"
+    },
+    "production": {
+        "name": "cccccccc",
+        "id": "id-ccccccc"
+    }
+}
